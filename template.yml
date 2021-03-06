@@ -17,15 +17,15 @@ Resources:
       MemorySize: 128
       Timeout: 5
       CodeUri: .
-    Events:
-      GET:
-        Type: Api
-        Properties:
-          Path: /
-          Method: GET
-          RestApiId: !Ref YoAPI
-          RequestParameters:
-            - method.request.querystring
+      Events:
+        GET:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
+            RestApiId: !Ref YoAPI
+            RequestParameters:
+              - method.request.querystring
     Metadata:
       BuildMethod: makefile
 
