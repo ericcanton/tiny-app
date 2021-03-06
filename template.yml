@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  # Workaround to stop forced creation of API Gateway stage called "Stage"
+  # https://github.com/aws/serverless-application-model/issues/191#issuecomment-580412747
+  Api:
+    OpenApiVersion: 3.0.1
+
+Resources:
+  HelloRustFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: HelloRust
+      Handler: bootstrap.is.real.handler
+      Runtime: provided
+      MemorySize: 128
+      Timeout: 5
+      CodeUri: .
+    Events:
+      GET:
+        Type: Api
+        Properties:
+          Path: /
+          Method: GET
+          RestApiId: !Ref YoAPI
+          RequestParameters:
+            - method.request.querystring
+    Metadata:
+      BuildMethod: makefile
+
+  YoAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      EndpointConfiguration:
+        Type: REGIONAL
