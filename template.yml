@@ -21,11 +21,11 @@ Resources:
         GET:
           Type: Api
           Properties:
-            Path: /
+            Path: /yo
             Method: GET
             RestApiId: !Ref YoAPI
             RequestParameters:
-              - method.request.querystring
+              - method.request.querystring.name
     Metadata:
       BuildMethod: makefile
 
