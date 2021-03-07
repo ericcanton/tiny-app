@@ -17,6 +17,9 @@ Resources:
       MemorySize: 128
       Timeout: 5
       CodeUri: .
+      Environment:
+        Variables:
+          RUST_BACKTRACE: 1
       Events:
         GET:
           Type: Api
