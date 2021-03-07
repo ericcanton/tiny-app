@@ -13,7 +13,10 @@ error_chain! {
 
 
 fn main() -> Result<()> {
-    let mut res = reqwest::blocking::get("https://wj2o3qsbc8.execute-api.us-east-1.amazonaws.com/prod/yo?name=eric")?;
+    let mut res = reqwest::blocking::get(
+        "https://wj2o3qsbc8.execute-api.us-east-1.amazonaws.com/prod/yo?name=eric"
+    )?;
+    
     let mut body = String::new();
     res.read_to_string(&mut body)?;
 
