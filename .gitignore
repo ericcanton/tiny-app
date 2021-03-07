@@ -1,2 +1,2 @@
-.aws-sam/**
-/target
+server/.aws-sam/**
+**/target
