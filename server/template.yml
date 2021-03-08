@@ -21,14 +21,12 @@ Resources:
         Variables:
           RUST_BACKTRACE: 1
       Events:
-        GET:
+        POST:
           Type: Api
           Properties:
-            Path: /yo
-            Method: GET
+            Path: /ab
+            Method: POST
             RestApiId: !Ref YoAPI
-            RequestParameters:
-              - method.request.querystring.name
     Metadata:
       BuildMethod: makefile
 

@@ -39,8 +39,8 @@ fn update_state(
 
     println!("{{a: {}, b: {}}}", ud.a, ud.b);
 
-    ud.a = ud.a + 1.0;
-    ud.b = 2.0 * ud.b;
+    ud.a = ud.a + 1.7;
+    ud.b = 2.0 * 3.141592653589793 * ud.b;
 
     println!("{{a: {}, b: {}}}", ud.a, ud.b);
 
