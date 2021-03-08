@@ -8,10 +8,10 @@ Globals:
     OpenApiVersion: 3.0.1
 
 Resources:
-  HelloRustFunction:
+  BasicRustFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: HelloRust
+      FunctionName: AB-reply
       Handler: bootstrap.is.real.handler
       Runtime: provided
       MemorySize: 128
@@ -26,11 +26,11 @@ Resources:
           Properties:
             Path: /ab
             Method: POST
-            RestApiId: !Ref YoAPI
+            RestApiId: !Ref ABApi
     Metadata:
       BuildMethod: makefile
 
-  YoAPI:
+  ABApi:
     Type: AWS::Serverless::Api
     Properties:
       StageName: prod

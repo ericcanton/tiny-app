@@ -2,8 +2,8 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "minapp"
+stack_name = "tiny-app"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1qd8kihutckvl"
-s3_prefix = "minapp"
+s3_prefix = "tiny-app"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
