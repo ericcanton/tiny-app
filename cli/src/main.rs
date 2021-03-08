@@ -63,7 +63,7 @@ fn main() -> Result<()> {
 
     is_json.insert(reqwest::header::CONTENT_TYPE, "application/json".parse().unwrap());
 
-    let mut res = client.post("https://wj2o3qsbc8.execute-api.us-east-1.amazonaws.com/prod/ab")
+    let mut res = client.post("https://<insert-id>.execute-api.us-east-1.amazonaws.com/prod/ab")
         .headers(is_json)
         .body(req_body)
         .send()?;
