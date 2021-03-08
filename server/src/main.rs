@@ -44,5 +44,10 @@ fn update_state(
 
     println!("{{a: {}, b: {}}}", ud.a, ud.b);
 
-    Ok(serde_json::to_string(&ud).unwrap())
+    let response = ApiResponse {
+        internal_code: InternalCode::Ok,
+        user_state: ud,
+    };
+
+    Ok(serde_json::to_string(&response).unwrap())
 }

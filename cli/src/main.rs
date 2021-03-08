@@ -23,6 +23,18 @@ struct Args {
     b: f32
 }
 
+#[derive(Deserialize, Serialize)]
+enum InternalCode {
+    Ok,
+    AwsError,
+}
+
+#[derive(Deserialize, Serialize)]
+struct ApiResponse {
+    internal_code: InternalCode,
+    user_state: Args
+}
+
 impl Args {
     fn new(args: &[String]) -> Result<Args> {
         if args.len() != 3 {
@@ -52,6 +64,8 @@ impl From<Args> for reqwest::blocking::Body {
 fn main() -> Result<()> {
     let args: Vec<String> = env::args().collect();
 
+    let api_id = String::from(env::var("ApiUrl").unwrap());
+
     let req_body = Args::new(&args).unwrap_or_else(|err| {
             println!("Problem parsing arguments: {}", err);
             process::exit(1);
@@ -63,7 +77,8 @@ fn main() -> Result<()> {
 
     is_json.insert(reqwest::header::CONTENT_TYPE, "application/json".parse().unwrap());
 
-    let mut res = client.post("https://<insert-id>.execute-api.us-east-1.amazonaws.com/prod/ab")
+    let mut res = client.post(
+        format!("https://{}.execute-api.us-east-1.amazonaws.com/prod/ab", api_id).as_str())
         .headers(is_json)
         .body(req_body)
         .send()?;
